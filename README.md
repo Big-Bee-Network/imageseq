@@ -1,6 +1,6 @@
 # Big Bee Image Sequence Generator
 
-This repository helps to generate image sequence of specimen following Big Bee image sequence naming conventions.
+This repository helps to generate image sequence of specimen following Big Bee image sequence naming conventions and creates an archive of the image sequence.
 
 Checkout the [samples](#animated-gifs).
 
