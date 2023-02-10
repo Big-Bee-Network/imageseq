@@ -28,8 +28,16 @@ This can be combines with other programs like `cat` to generate image sequences 
 
 ```
 cat catalogNumbers.txt\
- xargs -L1 ./create-imsageseq 
+ | xargs -L1 ./create-imsageseq 
 ```
+
+or, if you'd like to do it in parallel:
+
+```
+cat catalogNumbers.txt\
+ | parallel ./create-imageseq {1}
+```
+
 
 ## Results
 
