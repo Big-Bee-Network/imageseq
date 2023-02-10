@@ -25,7 +25,6 @@ function track-collection-extract-images {
   | preston dwc-stream ${OPTS}\
   | grep "${CATALOG_NUMBER}"\
   | grep _3d_\
-  | head -n5\
   | jq --raw-output '.["http://rs.tdwg.org/ac/terms/accessURI"]'\
   | xargs -L25 preston track ${OPTS}
 }
@@ -85,10 +84,10 @@ function append-readme {
   tee --append ${DIST_DIR}/README.md
 }
 
-echo -e "# ${CATALOG_NUMBER}\n\nThis package contains image sequences exacted from specimen with catalog number ${CATALOG_NUMBER} as extract from ${DWC_URL} using tools like Preston, zip and ffmpeg.\n\n ## Provenance" | append-readme
+echo -e "# ${CATALOG_NUMBER}\nThis package contains image sequences exacted from specimen with catalog number ${CATALOG_NUMBER} as extract from ${DWC_URL} using tools like Preston, zip and ffmpeg.\n ## Provenance\n" | append-readme
 
 preston history ${OPTS} | append-readme 
 
-echo -e "\n\n## Content Aliases\n\n" | append-readme 
+echo -e "\n## Content Aliases\n" | append-readme 
 
 preston alias ${OPTS} | append-readme
