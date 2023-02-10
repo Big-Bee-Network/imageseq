@@ -97,3 +97,16 @@ dist/UCSB-IZC00012194/label.png
 dist/UCSB-IZC00012194/ff8b55538305ea8c9268cf4f2c533ddf05ed21cff27ba088b7637fae9654b7ed
 dist/UCSB-IZC00012194/d0e42a073c98c93beeff95caf987d4b4aa022f3b9045472070d51c7b56771014
 ```
+
+![image](./examples/dist_UCSB-IZC00009834_imageseq.gif)
+![image](./examples/dist_UCSB-IZC00042555_imageseq.gif)
+![image](./examples/dist_UCSB-IZC00028367_imageseq.gif)
+![image](./examples/dist_UCSB-IZC00010405_imageseq.gif)
+![image](./examples/dist_UCSB-IZC00035429_imageseq.gif)
+![image](./examples/dist_UCSB-IZC00034469_imageseq.gif)
+![image](./examples/dist_UCSB-IZC00036317_imageseq.gif)
+![image](./examples/dist_UCSB-IZC00010327_imageseq.gif)
+![image](./examples/dist_UCSB-IZC00011226_imageseq.gif)
+![image](./examples/dist_UCSB-IZC00012194_imageseq.gif)
+![image](./examples/dist_UCSB-IZC00010279_imageseq.gif)
+![image](./examples/dist_UCSB-IZC00009053_imageseq.gif)
