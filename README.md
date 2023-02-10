@@ -2,13 +2,19 @@
 
 This repository helps to generate image sequence of specimen following Big Bee image sequence naming conventions.
 
+## Prerequisites
+
+ * linux, mac os x, or Windows Subsystem for Linux https://en.wikipedia.org/wiki/Windows_Subsystem_for_Linux
+ * Preston https://github.com/bio-guoda/preston
+ * ffmpeg 
+ * zip
+
 ## Usage
 
 
 ```
 ./create-imageseq [catalog number] [dwca URL]
 ```
-
 
 where 
 
