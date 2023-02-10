@@ -40,7 +40,7 @@ function build-image-sequence-archive {
   | cut -f2\
   | tee ${TMP_DIR}/image-hashes.txt\
   | nl -n rz\
-  | parallel --col-sep '\t' "preston cat {2} > ${TMP_DIR}/{1}-${CATALOG_NUMBER}.jpg"
+  | parallel --col-sep '\t' "preston cat ${OPTS} {2} > ${TMP_DIR}/{1}-${CATALOG_NUMBER}.jpg"
 
   local BEE_IMAGE_ZIP="${DIST_DIR}/imageseq.zip"
 
@@ -84,10 +84,10 @@ function append-readme {
   tee --append ${DIST_DIR}/README.md
 }
 
-echo -e "# ${CATALOG_NUMBER}\n\n## Provenance" | append-readme
+echo -e "# ${CATALOG_NUMBER}\n\nThis package contains image sequences exacted from specimen with catalog number ${CATALOG_NUMBER} as extract from ${DWC_URL} using tools like Preston, zip and ffmpeg.\n\n ## Provenance" | append-readme
 
 preston history ${OPTS} | append-readme 
 
-echo -e "## Content Aliases\n\n" | append-readme 
+echo -e "\n\n## Content Aliases\n\n" | append-readme 
 
 preston alias ${OPTS} | append-readme
