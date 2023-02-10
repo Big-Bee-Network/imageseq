@@ -12,11 +12,13 @@ CATALOG_NUMBER=${1:-UCSB-IZC00012194}
 DWC_URL=${2:-https://library.big-bee.net/portal/content/dwca/UCSB-IZC_DwC-A.zip}
 
 DIST_DIR=dist/${CATALOG_NUMBER}
-TMP_DIR=tmp/${CATALOG_NUMBER}
-
-OPTS="--data-dir dist/${CATALOG_NUMBER}/data"
-
 mkdir -p ${DIST_DIR}
+
+TMP_DIR=tmp/${CATALOG_NUMBER}
+mkdir -p ${TMP_DIR}
+
+OPTS="--data-dir $TMP_DIR/data"
+
 
 function track-collection-extract-images {
   preston track ${OPTS} "${DWC_URL}"\
@@ -29,7 +31,6 @@ function track-collection-extract-images {
 }
 
 function build-image-sequence-archive {
-  mkdir -p ${TMP_DIR}
 
   preston alias ${OPTS} --log tsv\
   | grep "${CATALOG_NUMBER}"\
