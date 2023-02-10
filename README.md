@@ -24,6 +24,13 @@ and
 
 `dwca URL` is location of the Darwin Core Archive that includes a specimen with the catalog number 
 
+This can be combines with other programs like `cat` to generate image sequences for a list of catalogNumbers:
+
+```
+cat catalogNumbers.txt\
+ xargs -L1 ./create-imsageseq 
+```
+
 ## Results
 
 If found, image sequence data products will be available in folder `dist/[catalog number]/` . 
