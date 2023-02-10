@@ -43,6 +43,9 @@ cat catalogNumbers.txt\
 
 If found, image sequence data products will be available in folder `dist/[catalog number]/` . 
 
+## Publication
+
+The distributions are optimized for publication to Zenodo. See https://github.com/jhpoelen/zenodo-upload for ways to do this programmatically.
 
 ## Example
 
