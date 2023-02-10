@@ -2,6 +2,8 @@
 
 This repository helps to generate image sequence of specimen following Big Bee image sequence naming conventions.
 
+Checkout the [samples](#animated-gifs).
+
 ## Prerequisites
 
  * linux, mac os x, or Windows Subsystem for Linux https://en.wikipedia.org/wiki/Windows_Subsystem_for_Linux
@@ -97,6 +99,8 @@ dist/UCSB-IZC00012194/label.png
 dist/UCSB-IZC00012194/ff8b55538305ea8c9268cf4f2c533ddf05ed21cff27ba088b7637fae9654b7ed
 dist/UCSB-IZC00012194/d0e42a073c98c93beeff95caf987d4b4aa022f3b9045472070d51c7b56771014
 ```
+
+## Animated GIFs
 
 ![image](./examples/dist_UCSB-IZC00009834_imageseq.gif)
 ![image](./examples/dist_UCSB-IZC00042555_imageseq.gif)
