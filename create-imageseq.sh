@@ -26,7 +26,14 @@ function track-collection-extract-images {
   | grep "${CATALOG_NUMBER}"\
   | grep _3d_\
   | jq --raw-output '.["http://rs.tdwg.org/ac/terms/accessURI"]'\
-  | xargs -L25 preston track ${OPTS}
+  > ${TMP_DIR}/image-urls.txt
+
+  NUMBER_OF_IMAGES=$(wc -l ${TMP_DIR}/image-urls.txt)
+
+  if [[ ${NUMBER_OF_IMAGES} -gt 0 ]]
+  then 
+    cat ${TMP_DIR}/image-urls.txt | xargs -L25 preston track ${OPTS}
+  fi
 }
 
 function build-image-sequence-archive {
