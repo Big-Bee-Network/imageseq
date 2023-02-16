@@ -10,6 +10,8 @@ Checkout the [samples](#animated-gifs).
  * Preston https://github.com/bio-guoda/preston
  * ffmpeg 
  * zip
+ * jq 
+ * parallel
 
 ## Usage
 

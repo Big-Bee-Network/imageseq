@@ -20,6 +20,14 @@ mkdir -p ${TMP_DIR}
 OPTS="--data-dir $TMP_DIR/data"
 
 
+function check-dependencies {
+  preston version
+  ffmpeg -version | head -n1
+  jq --version
+  which zip
+  parallel --version | head -n1
+} 
+
 function track-collection-extract-images {
   preston track ${OPTS} "${DWC_URL}"\
   | preston dwc-stream ${OPTS}\
@@ -28,7 +36,7 @@ function track-collection-extract-images {
   | jq --raw-output '.["http://rs.tdwg.org/ac/terms/accessURI"]'\
   > ${TMP_DIR}/image-urls.txt
 
-  NUMBER_OF_IMAGES=$(wc -l ${TMP_DIR}/image-urls.txt)
+  NUMBER_OF_IMAGES=$(cat ${TMP_DIR}/image-urls.txt | wc -l)
 
   if [[ ${NUMBER_OF_IMAGES} -gt 0 ]]
   then 
@@ -81,6 +89,7 @@ function generate-label {
   preston label ${OPTS} > ${DIST_DIR}/label.png
 }
 
+check-dependencies
 track-collection-extract-images
 build-image-sequence-archive
 generate-label
