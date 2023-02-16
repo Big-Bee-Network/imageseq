@@ -20,7 +20,7 @@ mkdir -p ${TMP_DIR}
 OPTS="--data-dir $TMP_DIR/data"
 
 
-function check-dependencies {
+check_dependencies() {
   preston version
   ffmpeg -version | head -n1
   jq --version
@@ -28,7 +28,8 @@ function check-dependencies {
   parallel --version | head -n1
 } 
 
-function track-collection-extract-images {
+track_collection_extract_images() {
+
   preston track ${OPTS} "${DWC_URL}"\
   | preston dwc-stream ${OPTS}\
   | grep "${CATALOG_NUMBER}"\
@@ -44,7 +45,7 @@ function track-collection-extract-images {
   fi
 }
 
-function build-image-sequence-archive {
+build_image_sequence_archive() {
 
   preston alias ${OPTS} --log tsv\
   | grep "${CATALOG_NUMBER}"\
@@ -85,18 +86,18 @@ cat ${TMP_DIR}/image-hashes.txt\
   | preston process ${OPTS} 
 }
 
-function generate-label {
+generate_label() {
   preston label ${OPTS} > ${DIST_DIR}/label.png
 }
 
-check-dependencies
-track-collection-extract-images
-build-image-sequence-archive
-generate-label
+check_dependencies
+track_collection_extract_images
+build_image_sequence_archive
+generate_label
 
 preston export ${OPTS} -p directoryDepth0 ${DIST_DIR} 
 
-function append-readme {
+append_readme() {
   tee --append ${DIST_DIR}/README.md
 }
 
