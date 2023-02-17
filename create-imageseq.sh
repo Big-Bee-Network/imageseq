@@ -10,6 +10,7 @@ set -xe
 
 CATALOG_NUMBER=${1:-"UCSB-IZC00012194"}
 DWC_URL=${2:-"https://library.big-bee.net/portal/content/dwca/UCSB-IZC_DwC-A.zip"}
+IMAGE_SEQUENCE_TAG="_3d_"
 
 DIST_DIR=dist/${CATALOG_NUMBER}
 mkdir -p "${DIST_DIR}"
@@ -33,7 +34,7 @@ track_collection_extract_images() {
   preston track ${OPTS} "${DWC_URL}"\
   | preston dwc-stream ${OPTS}\
   | grep "${CATALOG_NUMBER}"\
-  | grep _3d_\
+  | grep ${IMAGE_SEQUENCE_TAG}\
   | jq --raw-output '.["http://rs.tdwg.org/ac/terms/accessURI"]'\
   > ${TMP_DIR}/image-urls.txt
 
@@ -108,3 +109,5 @@ preston history ${OPTS} | append_readme
 echo -e "\n## Content Aliases\n" | append_readme 
 
 preston alias ${OPTS} | append_readme
+
+echo image sequence package for ${CATALOG_NUMBER} available in ${PWD}/${DIST_DIR}
