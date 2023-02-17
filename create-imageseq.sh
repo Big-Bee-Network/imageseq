@@ -39,9 +39,9 @@ track_collection_extract_images() {
 
   NUMBER_OF_IMAGES=$(cat ${TMP_DIR}/image-urls.txt | wc -l)
 
-  if [ ${NUMBER_OF_IMAGES} -gt 0 ]
+  if [ "${NUMBER_OF_IMAGES}" -gt 0 ]
   then 
-    cat ${TMP_DIR}/image-urls.txt | xargs -L25 preston track ${OPTS}
+    cat "${TMP_DIR}/image-urls.txt" | xargs -L25 preston track ${OPTS}
   fi
 }
 
