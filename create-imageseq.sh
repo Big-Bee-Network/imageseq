@@ -60,7 +60,7 @@ build_image_sequence_archive() {
 
   local BEE_IMAGE_ZIP="${DIST_DIR}/imageseq.zip"
 
-  zip "${BEE_IMAGE_ZIP}" ${TMP_DIR}/*.jpg
+  zip --junk-paths "${BEE_IMAGE_ZIP}" ${TMP_DIR}/*.jpg
 
   BEE_GIF="${DIST_DIR}/imageseq.gif"
 
