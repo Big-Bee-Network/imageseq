@@ -8,8 +8,8 @@
 
 set -xe
 
-CATALOG_NUMBER=${1:-UCSB-IZC00012194}
-DWC_URL=${2:-https://library.big-bee.net/portal/content/dwca/UCSB-IZC_DwC-A.zip}
+CATALOG_NUMBER=${1:-"UCSB-IZC00012194"}
+DWC_URL=${2:-"https://library.big-bee.net/portal/content/dwca/UCSB-IZC_DwC-A.zip"}
 
 DIST_DIR=dist/${CATALOG_NUMBER}
 mkdir -p "${DIST_DIR}"
@@ -60,7 +60,7 @@ build_image_sequence_archive() {
 
   local BEE_IMAGE_ZIP="${DIST_DIR}/imageseq.zip"
 
-  zip --no-dir-entries "${BEE_IMAGE_ZIP}" "${TMP_DIR}/*.jpg"
+  zip "${BEE_IMAGE_ZIP}" ${TMP_DIR}/*.jpg
 
   BEE_GIF="${DIST_DIR}/imageseq.gif"
 
@@ -101,10 +101,10 @@ append_readme() {
   tee --append ${DIST_DIR}/README.md
 }
 
-echo -e "# ${CATALOG_NUMBER}\nThis package contains image sequences exacted from specimen with catalog number ${CATALOG_NUMBER} as extract from ${DWC_URL} using tools like Preston, zip and ffmpeg.\n ## Provenance\n" | append-readme
+echo -e "# ${CATALOG_NUMBER}\nThis package contains image sequences exacted from specimen with catalog number ${CATALOG_NUMBER} as extract from ${DWC_URL} using tools like Preston, zip and ffmpeg.\n ## Provenance\n" | append_readme
 
-preston history ${OPTS} | append-readme 
+preston history ${OPTS} | append_readme 
 
-echo -e "\n## Content Aliases\n" | append-readme 
+echo -e "\n## Content Aliases\n" | append_readme 
 
-preston alias ${OPTS} | append-readme
+preston alias ${OPTS} | append_readme
