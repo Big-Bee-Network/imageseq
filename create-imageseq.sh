@@ -12,10 +12,10 @@ CATALOG_NUMBER=${1:-UCSB-IZC00012194}
 DWC_URL=${2:-https://library.big-bee.net/portal/content/dwca/UCSB-IZC_DwC-A.zip}
 
 DIST_DIR=dist/${CATALOG_NUMBER}
-mkdir -p ${DIST_DIR}
+mkdir -p "${DIST_DIR}"
 
-TMP_DIR=tmp/${CATALOG_NUMBER}
-mkdir -p ${TMP_DIR}
+TMP_DIR="tmp/${CATALOG_NUMBER}"
+mkdir -p "${TMP_DIR}"
 
 OPTS="--data-dir $TMP_DIR/data"
 
@@ -39,7 +39,7 @@ track_collection_extract_images() {
 
   NUMBER_OF_IMAGES=$(cat ${TMP_DIR}/image-urls.txt | wc -l)
 
-  if [[ ${NUMBER_OF_IMAGES} -gt 0 ]]
+  if [ ${NUMBER_OF_IMAGES} -gt 0 ]
   then 
     cat ${TMP_DIR}/image-urls.txt | xargs -L25 preston track ${OPTS}
   fi
@@ -60,12 +60,12 @@ build_image_sequence_archive() {
 
   local BEE_IMAGE_ZIP="${DIST_DIR}/imageseq.zip"
 
-  zip --no-dir-entries ${BEE_IMAGE_ZIP} ${TMP_DIR}/*.jpg
+  zip --no-dir-entries "${BEE_IMAGE_ZIP}" "${TMP_DIR}/*.jpg"
 
   BEE_GIF="${DIST_DIR}/imageseq.gif"
 
   # compile the images into an animated gif 
-  ffmpeg -y -i ${TMP_DIR}/%06d-${CATALOG_NUMBER}.jpg -vf scale=320:240 "${BEE_GIF}"
+  ffmpeg -y -i "${TMP_DIR}/%06d-${CATALOG_NUMBER}.jpg" -vf scale=320:240 "${BEE_GIF}"
 
   # append the movie to the Preston archive
   BEE_GIF_HASH=$(preston track ${OPTS} "file://$PWD/${BEE_GIF}" | grep hasVersion | grep -o -P "hash://sha256/[a-f0-9]{64}")
