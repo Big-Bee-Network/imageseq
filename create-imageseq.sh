@@ -110,4 +110,4 @@ echo -e "\n## Content Aliases\n" | append_readme
 
 preston alias ${OPTS} | append_readme
 
-echo image sequence package for ${CATALOG_NUMBER} available in ${PWD}/${DIST_DIR}
+echo Image sequence package for ${CATALOG_NUMBER} available in [${PWD}/${DIST_DIR}] .
